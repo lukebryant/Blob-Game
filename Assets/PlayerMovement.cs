@@ -8,10 +8,12 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     int id;
     private bool active;
+    private Rigidbody rigidBody;
 
     // Use this for initialization
     void Start () {
 		target = transform.position;
+        rigidBody.detectCollisions = false;
         if (id == 0) active = true;
         else active = false;
 	}
@@ -29,7 +31,11 @@ public class PlayerMovement : MonoBehaviour {
             else active = false;
         }
         if (!active) return;
-		var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButtonDown(0))
+        {
+            rigidBody.detectCollisions = true;
+        }
+        var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
