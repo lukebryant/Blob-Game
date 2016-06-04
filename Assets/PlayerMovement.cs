@@ -8,12 +8,13 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     int id;
     private bool active;
-    private Rigidbody rigidBody;
+    private Rigidbody2D rigidBody;
 
     // Use this for initialization
     void Start () {
 		target = transform.position;
-        rigidBody.detectCollisions = false;
+        //rigidBody.GetComponent<Rigidbody2D>();
+        //rigidBody.detectCollisions = false;
         if (id == 0) active = true;
         else active = false;
 	}
@@ -33,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!active) return;
         if (Input.GetMouseButtonDown(0))
         {
-            rigidBody.detectCollisions = true;
+            //rigidBody.detectCollisions = true;
         }
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
