@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField]
     private GameObject sword;
 
-    private static float swingSpeed = 150f;
+    private static float swingSpeed = 500f;
 
     private static float swordDistance = 0.4f;
     private static Vector3 startingSwordAngle = new Vector3(0, 0, -70.0f);
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour {
     private PolygonCollider2D swordCollider;
     private Vector3 swordAngle;
     private bool swinging = false;
+    private float wait = 0;
     
     // Use this for initialization
     void Start () {
@@ -52,10 +53,16 @@ public class PlayerMovement : MonoBehaviour {
             if (swordAngle.z >= 70) {
                 swordAngle = startingSwordAngle;
                 swinging = false;
-                RotateSword(swordAngle);
+                wait = 0.1f;
             }
             return;
         }
+        if(wait > 0)
+        {
+            wait -= Time.deltaTime;
+            return;
+        }
+        RotateSword(swordAngle);
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
 
