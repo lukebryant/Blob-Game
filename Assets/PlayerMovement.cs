@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
@@ -41,8 +41,11 @@ public class PlayerMovement : MonoBehaviour {
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
-        Quaternion rot = Quaternion.LookRotation(transform.position - mousePos, Vector3.forward);
-        transform.rotation = rot;
-        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
-	}
+        if (10 < Vector3.Magnitude(transform.position - mousePos))
+        {
+            Quaternion rot = Quaternion.LookRotation(transform.position - mousePos, Vector3.forward);
+            transform.rotation = rot;
+            transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+        }
+    }
 }
