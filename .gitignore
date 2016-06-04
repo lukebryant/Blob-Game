@@ -1,5 +1,9 @@
 UnityGenerated/
 Library/
+$PROJDIR/Temp/
+$PROJDIR/Library/
+$PROJDIR/Obj/
+
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -12,6 +16,8 @@ ExportedObj/
 *.suo
 *.sln
 *.user
+*.userprefs
+*.DS_store
 *.unityproj
 *.booproj
  
@@ -26,3 +32,4 @@ ExportedObj/
 Icon?
 ehthumbs.db
 Thumbs.db
+
