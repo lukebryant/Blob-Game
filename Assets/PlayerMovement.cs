@@ -12,10 +12,18 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown(0)) {
-			target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			target = new Vector3(target.x,target.y,transform.position.z);
-		}
-		transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        
+		
+		var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
+
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        Quaternion rot = Quaternion.LookRotation(transform.position - mousePos, Vector3.forward);
+        transform.rotation = rot;
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+
+         
+
 	}
 }
