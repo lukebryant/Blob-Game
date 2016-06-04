@@ -2,19 +2,31 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-	private Vector3 target;
     [SerializeField]
     float speed = 1.5f;
     [SerializeField]
     int id;
-    private bool active;
-    private Rigidbody2D rigidBody;
+    [SerializeField]
+    private GameObject sword;
 
+    private static float swingSpeed = 150f;
+
+    private static float swordDistance = 0.4f;
+    private static Vector3 startingSwordAngle = new Vector3(0, 0, -70.0f);
+
+    private Vector3 target;
+    private bool active;
+    private PolygonCollider2D swordCollider;
+    private Vector3 swordAngle;
+    private bool swinging = false;
+    
     // Use this for initialization
     void Start () {
 		target = transform.position;
-        //rigidBody.GetComponent<Rigidbody2D>();
-        //rigidBody.detectCollisions = false;
+        swordCollider = GetComponentInChildren<PolygonCollider2D>();
+        swordCollider.isTrigger = true;
+        swordAngle = startingSwordAngle;
+        RotateSword(swordAngle);
         if (id == 0) active = true;
         else active = false;
 	}
@@ -32,9 +44,17 @@ public class PlayerMovement : MonoBehaviour {
             else active = false;
         }
         if (!active) return;
-        if (Input.GetMouseButtonDown(0))
+        if (!swinging) if (Input.GetMouseButtonDown(0)) swinging = true;
+        if (swinging)
         {
-            //rigidBody.detectCollisions = true;
+            RotateSword(swordAngle);
+            swordAngle.z += Time.deltaTime * swingSpeed;
+            if (swordAngle.z >= 70) {
+                swordAngle = startingSwordAngle;
+                swinging = false;
+                RotateSword(swordAngle);
+            }
+            return;
         }
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
@@ -47,5 +67,13 @@ public class PlayerMovement : MonoBehaviour {
             transform.rotation = rot;
             transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
         }
+    }
+
+    //rotates the sword to "angle" around the player, while maintaining constant distance "swordDistance"
+    void RotateSword(Vector3 angle)
+    {
+        Quaternion rot = Quaternion.AngleAxis(angle.z, Vector3.forward);
+        sword.transform.localPosition = swordDistance * (rot * Vector3.up);
+        sword.transform.localRotation = rot;
     }
 }

@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400524}
   - 212: {fileID: 21210924}
   - 50: {fileID: 5080062}
-  - 233: {fileID: 23384366}
   - 60: {fileID: 6014666}
   m_Layer: 0
   m_Name: Sword
@@ -44,8 +43,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153480}
-  m_LocalRotation: {x: 0, y: 0, z: -0.25881907, w: 0.9659258}
-  m_LocalPosition: {x: 0.2, y: 0.3, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 418326}
@@ -147,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.5
   id: 0
+  sword: {fileID: 153480}
 --- !u!212 &21210924
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -207,29 +207,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!233 &23384366
-HingeJoint2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 153480}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 5011772}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.2, y: 0.3}
-  m_UseMotor: 0
-  m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
-  m_AngleLimits:
-    m_LowerAngle: 0
-    m_UpperAngle: 359
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
