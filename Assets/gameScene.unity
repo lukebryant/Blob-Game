@@ -481,7 +481,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+  Green_slime: {fileID: 128162, guid: c7fca3016227d8b4396c97343cc1dc8d, type: 2}
   total: 0
+  spawntotal: 600
 --- !u!4 &2059458652
 Transform:
   m_ObjectHideFlags: 0
