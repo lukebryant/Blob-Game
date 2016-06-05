@@ -9,6 +9,8 @@ public class SlimeSpawn : MonoBehaviour
 
     public int total;
 
+    public int spawntotal;
+
     private Vector3 spawnPoint;
 
 	void Update ()
@@ -17,9 +19,9 @@ public class SlimeSpawn : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         total = enemies.Length;
         
-        if (total <40)
+        if (total < spawntotal)
         {
-            InvokeRepeating("spawnEnemy", 5, 10f);
+            spawnEnemy();
         }
 	}
     void spawnEnemy ()
