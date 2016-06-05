@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21210924}
   - 50: {fileID: 5080062}
   - 60: {fileID: 6014666}
+  - 114: {fileID: 11422650}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -133,6 +134,17 @@ PolygonCollider2D:
       - {x: 0.04, y: -0.5}
       - {x: 0.09140389, y: -0.3525189}
       - {x: 0.10111505, y: -0.3160771}
+--- !u!114 &11422650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42f6be6d71360a479ba6e89bbdc724b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11492126
 MonoBehaviour:
   m_ObjectHideFlags: 1
