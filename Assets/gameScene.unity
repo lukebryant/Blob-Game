@@ -462,7 +462,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2059458652}
   - 114: {fileID: 2059458651}
-  - 114: {fileID: 2059458650}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -470,19 +469,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2059458650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2059458649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 991edc45ad5097946a75f8ddff4f6af8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemies: []
-  total: 0
 --- !u!114 &2059458651
 MonoBehaviour:
   m_ObjectHideFlags: 0
