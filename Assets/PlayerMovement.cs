@@ -51,6 +51,19 @@ public class PlayerMovement : MonoBehaviour {
         swingWait -= Time.deltaTime;
         stunWait -= Time.deltaTime;
         if (!active) return;
+        if (swingWait > 0)
+        {
+            return;     //if swinging, no movement is allowed
+        }
+        if (stunned)
+        {
+            if (stunWait > 0) return;
+            if (stunWait <= 0)
+            {
+                spriteRenderer.color = Color.white;
+                stunned = false;
+            }
+        }
         if (!swinging) if (Input.GetMouseButtonDown(0)) swinging = true;
         if (swinging)
         {
@@ -63,19 +76,7 @@ public class PlayerMovement : MonoBehaviour {
             }
             return;
         }
-        if(swingWait > 0)
-        {
-            return;     //if swinging, no movement is allowed
-        }
-        if (stunned)
-        {
-            if(stunWait > 0) return;
-            if(stunWait <= 0)
-            {
-                spriteRenderer.color = Color.white;
-                stunned = false;
-            }
-        }
+
         RotateSword(swordAngle);
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
