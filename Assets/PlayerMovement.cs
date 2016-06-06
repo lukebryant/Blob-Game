@@ -19,11 +19,15 @@ public class PlayerMovement : MonoBehaviour {
     private PolygonCollider2D swordCollider;
     private Vector3 swordAngle;
     private bool swinging = false;
-    private float wait = 0;
-    
+    private float swingWait = 0;
+    private bool stunned = false;
+    private float stunWait = 0;
+    private SpriteRenderer spriteRenderer;
+
     // Use this for initialization
     void Start () {
 		target = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         swordCollider = GetComponentInChildren<PolygonCollider2D>();
         swordCollider.isTrigger = true;
         swordAngle = startingSwordAngle;
@@ -44,7 +48,22 @@ public class PlayerMovement : MonoBehaviour {
             if (id == 1) active = true;
             else active = false;
         }
+        swingWait -= Time.deltaTime;
+        stunWait -= Time.deltaTime;
         if (!active) return;
+        if (swingWait > 0)
+        {
+            return;     //if swinging, no movement is allowed
+        }
+        if (stunned)
+        {
+            if (stunWait > 0) return;
+            if (stunWait <= 0)
+            {
+                spriteRenderer.color = Color.white;
+                stunned = false;
+            }
+        }
         if (!swinging) if (Input.GetMouseButtonDown(0)) swinging = true;
         if (swinging)
         {
@@ -53,15 +72,11 @@ public class PlayerMovement : MonoBehaviour {
             if (swordAngle.z >= 70) {
                 swordAngle = startingSwordAngle;
                 swinging = false;
-                wait = 0.1f;
+                swingWait = 0.1f;
             }
             return;
         }
-        if(wait > 0)
-        {
-            wait -= Time.deltaTime;
-            return;
-        }
+
         RotateSword(swordAngle);
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		var target = new Vector3(mousePos.x,mousePos.y,transform.position.z);
@@ -82,6 +97,13 @@ public class PlayerMovement : MonoBehaviour {
         Quaternion rot = Quaternion.AngleAxis(angle.z, Vector3.forward);
         sword.transform.localPosition = swordDistance * (rot * Vector3.up);
         sword.transform.localRotation = rot;
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        stunned = true;
+        stunWait = 1;
+        spriteRenderer.color = Color.red;
     }
 
     public bool isSwinging() { return swinging; }
