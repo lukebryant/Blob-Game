@@ -19,9 +19,10 @@ public class SlimeMovement : MonoBehaviour
     {
     }
 
-    void OnDestroy()
+    public void Die()
     {
         GameObject newSplat = (GameObject)Instantiate(splat);
         newSplat.transform.position = this.transform.position;
+		Destroy (gameObject);
     }
 }
