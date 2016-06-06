@@ -15,7 +15,7 @@ GameObject:
   - 50: {fileID: 5029100}
   m_Layer: 0
   m_Name: Green_slime
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: -5, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -94,6 +95,8 @@ MonoBehaviour:
   splat: {fileID: 103836, guid: 2640671338417cf4c9f407c0367f497f, type: 2}
   startingDirection: {x: 88.975266, y: -45.644306}
   speed: 1.5
+  scoreValue: 1
+  gameController: {fileID: 0}
 --- !u!212 &21252420
 SpriteRenderer:
   m_ObjectHideFlags: 1
