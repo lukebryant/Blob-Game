@@ -42,3 +42,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 2375760401
+    locked: 0
+  - name: Splats
+    uniqueID: 2922883015
+    locked: 0
+  - name: Enemies
+    uniqueID: 2262759349
+    locked: 0
+  - name: Player
+    uniqueID: 1963638397
+    locked: 0

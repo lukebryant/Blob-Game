@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4b5b147f639d24584f0f4dd5217108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splat: {fileID: 103836, guid: 2640671338417cf4c9f407c0367f497f, type: 2}
   startingDirection: {x: 88.975266, y: -45.644306}
   speed: 1.5
 --- !u!212 &21252420
@@ -117,7 +118,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2032207947
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300016, guid: 82ff72c6f596be14dad997778c8645f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -138,6 +139,14 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 4026ce2079efc4f4a828fc2ad1c793ed, type: 2}
+    - target: {fileID: 0}
+      propertyPath: splat
+      value: 
+      objectReference: {fileID: 103836, guid: 2640671338417cf4c9f407c0367f497f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: -2032207947
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 128162}

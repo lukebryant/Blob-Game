@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SlimeMovement : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject splat;
     public Vector2 startingDirection;
     public float speed = 1.5f;
 
@@ -15,5 +17,11 @@ public class SlimeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void OnDestroy()
+    {
+        GameObject newSplat = (GameObject)Instantiate(splat);
+        newSplat.transform.position = this.transform.position;
     }
 }
