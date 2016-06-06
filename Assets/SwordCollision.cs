@@ -15,6 +15,7 @@ public class SwordCollision : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(playerMovement.isSwinging()) Destroy(other.gameObject);
+		
+		if(playerMovement.isSwinging()) other.GetComponent<SlimeMovement>().Die();
     }
 }
