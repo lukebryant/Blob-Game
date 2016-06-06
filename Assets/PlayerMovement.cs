@@ -83,4 +83,6 @@ public class PlayerMovement : MonoBehaviour {
         sword.transform.localPosition = swordDistance * (rot * Vector3.up);
         sword.transform.localRotation = rot;
     }
+
+    public bool isSwinging() { return swinging; }
 }
